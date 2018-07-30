@@ -2,6 +2,7 @@
   "name": "@fusionstrings/project-fusion-sapper",
   "description": "TODO",
   "version": "0.0.1",
+  "main": "build/index.js",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build",
