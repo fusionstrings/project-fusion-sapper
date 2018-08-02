@@ -11,7 +11,14 @@ polka() // You can also use Express
 		compression({ threshold: 0 }),
 		(req, res, next) => {
 			// check if we're looking at a /static/* request
-			return req.path.startsWith('/assets/') ? assets(req, res, next) : next();
+			// return req.path.startsWith('/assets/') ? assets(req, res, next) : next();
+
+			if (req.path.startsWith('/assets/')) {
+				req.path = req.path.substring(7); // remove "/assets" prefix
+				assets(req, res, next);
+			} else {
+				next();
+			}
 		},
 		sapper({ manifest })
 	)
